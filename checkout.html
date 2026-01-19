@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - ShoeHaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">Shoe<span>Haven</span></a>
+                
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="men.html">Men</a></li>
+                    <li><a href="women.html">Women</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <a href="signin.html" class="user-icon"><i class="fas fa-user"></i></a>
+                    <a href="#" class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <button class="hamburger" id="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Section -->
+    <section class="checkout-container">
+        <div class="container">
+            <h2 class="section-title">Checkout</h2>
+            
+            <div class="checkout-grid">
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <form id="checkoutForm">
+                        <h3>Shipping Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Shipping Address</label>
+                            <input type="text" id="address" placeholder="Enter your address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" placeholder="City" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" placeholder="State" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" placeholder="ZIP Code" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <select id="country" required>
+                                <option value="">Select Country</option>
+                                <option value="KE">Kenya</option>
+                                <option value="TZ">Tanzania</option>
+                                <option value="UG">Uganda</option>
+                                <option value="RW">Rwanda</option>
+                            </select>
+                        </div>
+                        
+                        <h3>Payment Method</h3>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-option">
+                                <input type="radio" id="creditCard" name="payment" value="credit" checked>
+                                <label for="creditCard">Credit Card</label>
+                            </div>
+                            
+                            <div class="payment-option">
+                                <input type="radio" id="mpesa" name="payment" value="mpesa">
+                                <label for="mpesa">M-Pesa</label>
+                            </div>
+                            
+                            <div class="payment-option">
+                                <input type="radio" id="cashOnDelivery" name="payment" value="cash">
+                                <label for="cashOnDelivery">Cash on Delivery</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" id="cardDetails">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+                        </div>
+                        
+                        <div class="form-row" id="cardExpiryCvv">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" id="mpesaNumber" style="display: none;">
+                            <label for="phoneNumber">M-Pesa Phone Number</label>
+                            <input type="text" id="phoneNumber" placeholder="07XX XXX XXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="remember-me">
+                                <input type="checkbox" id="saveInfo">
+                                <label for="saveInfo">Save payment information for next time</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Complete Purchase</button>
+                    </form>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    
+                    <div class="checkout-summary-items">
+                        <!-- Order items will be loaded via JS -->
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal">Ksh 0</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Shipping</span>
+                        <span id="checkoutShipping">Ksh 0</span>
+                    </div>
+                    
+                    <div class="summary-item">
+                        <span>Tax (16% VAT)</span>
+                        <span id="checkoutTax">Ksh 0</span>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="checkoutTotal">Ksh 0</span>
+                    </div>
+                    
+                    <div class="coupon">
+                        <input type="text" placeholder="Enter coupon code">
+                        <button class="btn-secondary">Apply</button>
+                    </div>
+                    
+                    <a href="index.html" class="btn-secondary" style="display: block; text-align: center; margin-top: 20px;">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <a href="index.html" class="logo">Shoe<span>Haven</span></a>
+                    <p>Your one-stop destination for premium footwear. Step into style and comfort with our curated collection.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="men.html">Men</a></li>
+                        <li><a href="women.html">Women</a></li>
+                        <li><a href="kids.html">Kids</a></li>
+                        <li><a href="signin.html">Sign In</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get updates on new arrivals and offers.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit" class="btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ShoeHaven. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">Ksh 0</span>
+            </div>
+            <a href="checkout.html" class="btn-primary">Checkout</a>
+            <a href="#" class="btn-secondary" id="continueShopping">Continue Shopping</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    
+    <script>
+        // Payment method toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('input[name="payment"]');
+            const cardDetails = document.getElementById('cardDetails');
+            const cardExpiryCvv = document.getElementById('cardExpiryCvv');
+            const mpesaNumber = document.getElementById('mpesaNumber');
+            
+            function togglePaymentFields() {
+                const selectedMethod = document.querySelector('input[name="payment"]:checked').value;
+                
+                if (selectedMethod === 'credit') {
+                    cardDetails.style.display = 'block';
+                    cardExpiryCvv.style.display = 'flex';
+                    mpesaNumber.style.display = 'none';
+                    
+                    // Make card fields required
+                    document.getElementById('cardNumber').required = true;
+                    document.getElementById('expiry').required = true;
+                    document.getElementById('cvv').required = true;
+                    document.getElementById('phoneNumber').required = false;
+                } else if (selectedMethod === 'mpesa') {
+                    cardDetails.style.display = 'none';
+                    cardExpiryCvv.style.display = 'none';
+                    mpesaNumber.style.display = 'block';
+                    
+                    // Make M-Pesa field required
+                    document.getElementById('cardNumber').required = false;
+                    document.getElementById('expiry').required = false;
+                    document.getElementById('cvv').required = false;
+                    document.getElementById('phoneNumber').required = true;
+                } else {
+                    cardDetails.style.display = 'none';
+                    cardExpiryCvv.style.display = 'none';
+                    mpesaNumber.style.display = 'none';
+                    
+                    // No fields required for cash on delivery
+                    document.getElementById('cardNumber').required = false;
+                    document.getElementById('expiry').required = false;
+                    document.getElementById('cvv').required = false;
+                    document.getElementById('phoneNumber').required = false;
+                }
+            }
+            
+            // Add event listeners to payment method radio buttons
+            paymentMethods.forEach(method => {
+                method.addEventListener('change', togglePaymentFields);
+            });
+            
+            // Initialize payment fields
+            togglePaymentFields();
+        });
+    </script>
+    
+    <style>
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .coupon {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .coupon input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</body>
+</html>
